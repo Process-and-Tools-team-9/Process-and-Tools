@@ -11,26 +11,34 @@ class Shipments(Base):
         self.data_path = root_path + "shipments.json"
         self.load(is_debug)
 
+    # This function returns the list of shipments
     def get_shipments(self):
         return self.data
 
+    # This function returns the shipment with the given id
+    # If the shipment with the given id does not exist, it returns None
     def get_shipment(self, shipment_id):
         for x in self.data:
             if x["id"] == shipment_id:
                 return x
         return None
 
+    # This function returns the items in the shipment with the given id
+    # If the shipment with the given id does not exist, it returns None
     def get_items_in_shipment(self, shipment_id):
         for x in self.data:
             if x["id"] == shipment_id:
                 return x["items"]
         return None
 
+    # This function adds the given shipment to the list
+    # It also sets the created_at and updated_at fields of the time of the creation
     def add_shipment(self, shipment):
         shipment["created_at"] = self.get_timestamp()
         shipment["updated_at"] = self.get_timestamp()
         self.data.append(shipment)
 
+    # This function updates the shipment with the given id, if the list contains a shipment with the given id
     def update_shipment(self, shipment_id, shipment):
         shipment["updated_at"] = self.get_timestamp()
         for i in range(len(self.data)):
@@ -38,6 +46,7 @@ class Shipments(Base):
                 self.data[i] = shipment
                 break
 
+    
     def update_items_in_shipment(self, shipment_id, items):
         shipment = self.get_shipment(shipment_id)
         current = shipment["items"]
@@ -74,11 +83,15 @@ class Shipments(Base):
         shipment["items"] = items
         self.update_shipment(shipment_id, shipment)
 
+    # This function removes the shipment with the given id
+    # if the list contains a shipment with the given id
     def remove_shipment(self, shipment_id):
         for x in self.data:
             if x["id"] == shipment_id:
                 self.data.remove(x)
 
+    # if debug is false this function loads the data from the shipments.json file
+    # if debug is true this function loads the data from the SHIPMENTS list
     def load(self, is_debug):
         if is_debug:
             self.data = SHIPMENTS
@@ -87,6 +100,7 @@ class Shipments(Base):
             self.data = json.load(f)
             f.close()
 
+    # This function saves the data of this object to the shipments.json file
     def save(self):
         f = open(self.data_path, "w")
         json.dump(self.data, f)
