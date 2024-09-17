@@ -11,8 +11,12 @@ from models.orders import Orders
 from models.clients import Clients
 from models.shipments import Shipments
 
+# DEBUG is either True or False
+# If True then the program runs in debug mode and gives additional information
+# If False then the program doesn't run in debug mode and does not give the additional information whilst running.
 DEBUG = False
 
+#The root path of all the data that's contained in this project
 ROOT_PATH = "CargoHub/data/"
 
 _warehouses = None
@@ -28,7 +32,7 @@ _orders = None
 _shipments = None
 _clients = None
 
-
+#This is where the objects are initialized with the root path and the debug settings
 def init():
     global _warehouses
     _warehouses = Warehouses(ROOT_PATH, DEBUG)
@@ -56,6 +60,7 @@ def init():
     _shipments = Shipments(ROOT_PATH, DEBUG)
 
 
+#These functions below return the objects, so that the objects could be used in other files of the program.
 def fetch_warehouse_pool():
     return _warehouses
 
