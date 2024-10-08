@@ -28,6 +28,12 @@ item = {
         "updated_at": "2015-09-26 06:37:56"
     }
 
+#### TESTS ####
+
+#The ones that do not work dont work because they are trying to take an id but an item does not have an id
+#Item type lines en groups do have id's
+#To fix this we can take a look at the uid
+
 def test_get_all_items():
     response = requests.get(f"{BASE_URL}/items",headers=header)
     assert response.status_code == 200
@@ -50,12 +56,26 @@ def test_update_item():
     assert response.status_code == 200
 
 
+#DOES NOT WORK
+#CODE SHOULD BE FIXED
 def test_delete_item():
     response = requests.delete(f"{BASE_URL}/items/1", headers=header)
     assert response.status_code == 200
 
 def get_items_for_supplier():
     response = requests.get(f"{BASE_URL}/supplier/34/items", headers=header)
+    assert response.status_code == 200
+
+def get_items_for_item_line():
+    response = requests.get(f"{BASE_URL}/item_line/11/items", headers=header)
+    assert response.status_code == 200
+
+def get_items_for_item_group():
+    response = requests.get(f"{BASE_URL}/item_group/73/items", headers=header)
+    assert response.status_code == 200
+
+def get_items_for_item_type():
+    response = requests.get(f"{BASE_URL}/item_type/14/items", headers=header)
     assert response.status_code == 200
 
 
