@@ -17,7 +17,7 @@ from models.shipments import Shipments
 DEBUG = False
 
 #The root path of all the data that's contained in this project
-ROOT_PATH = "CargoHub/data/"
+ROOT_PATH = "CargoHub/test-data/"
 
 _warehouses = None
 _locations = None

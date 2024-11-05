@@ -84,20 +84,19 @@ class Orders(Base):
                         min_ordered = z["total_allocated"]
                         min_inventory = z
                 min_inventory["total_allocated"] -= x["amount"]
-                min_inventory["total_expected"] = y["total_on_hand"] + y["total_ordered"]
+                min_inventory["total_expected"] = z["total_on_hand"] + z["total_ordered"]
                 data_provider.fetch_inventory_pool().update_inventory(min_inventory["id"], min_inventory)
         for x in current:
             for y in items:
                 if x["item_id"] == y["item_id"]:
                     inventories = data_provider.fetch_inventory_pool().get_inventories_for_item(x["item_id"])
                     min_ordered = 1_000_000_000_000_000_000
-                    min_inventory
                     for z in inventories:
                         if z["total_allocated"] < min_ordered:
                             min_ordered = z["total_allocated"]
                             min_inventory = z
                 min_inventory["total_allocated"] += y["amount"] - x["amount"]
-                min_inventory["total_expected"] = y["total_on_hand"] + y["total_ordered"]
+                min_inventory["total_expected"] = z["total_on_hand"] + z["total_ordered"]
                 data_provider.fetch_inventory_pool().update_inventory(min_inventory["id"], min_inventory)
         order["items"] = items
         self.update_order(order_id, order)
