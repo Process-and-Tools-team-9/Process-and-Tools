@@ -5,7 +5,7 @@ name: CargoHub CI/CD
 
 on:
   push:
-    branches: [ "CI/CD-intergration" ]
+    branches: [ "main" ]
 
 jobs:
   build:
