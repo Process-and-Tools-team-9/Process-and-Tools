@@ -10,6 +10,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: Production
     steps:
     - uses: actions/checkout@v4
     - name: Set up Python 3.10
@@ -22,13 +23,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Test with pytest
+    - name: Run integration tests with pytest
       run: |
-        pytest
-        pytest --cov --cov-report term --cov-report xml:coverage.xml
-    - name: Test with pytest
-      run: |
-        coverage run -m pytest
+        pytest Integration-Tests --cov=api --cov-report xml:coverage.xml
     - name: Run code coverage
       run: |
         # Run coverage report
