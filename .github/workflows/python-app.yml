@@ -24,7 +24,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run integration tests with pytest
       run: |
-        pytest Integration-Tests --cov=api --cov-report xml:coverage.xml
+        pytest ./CargoHub/Integration-Tests --cov=api --cov-report xml:coverage.xml
     - name: Run code coverage
       run: |
         # Run coverage report
