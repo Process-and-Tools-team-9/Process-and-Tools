@@ -1,4 +1,5 @@
 import json
+import os
 
 from models.base import Base
 
@@ -9,7 +10,7 @@ ITEM_LINES = []
 class ItemLines(Base):
     #Initializes the itemLines and sets the path to the item_lines.json for the data
     def __init__(self, root_path, is_debug=False):
-        self.data_path = root_path + "item_lines.json"
+        self.data_path = os.path.join(root_path, "data", "item_lines.json")
         self.load(is_debug)
 
     #returns all the item lines

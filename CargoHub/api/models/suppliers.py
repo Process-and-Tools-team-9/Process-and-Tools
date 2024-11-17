@@ -1,4 +1,5 @@
 import json
+import os
 
 from models.base import Base
 
@@ -7,7 +8,7 @@ SUPPLIERS = []
 
 class Suppliers(Base):
     def __init__(self, root_path, is_debug=False):
-        self.data_path = root_path + "suppliers.json"
+        self.data_path = os.path.join(root_path, "data", "suppliers.json")
         self.load(is_debug)
 
     # This function returns the list of suppliers
