@@ -1,5 +1,5 @@
 import json
-
+import os
 from models.base import Base
 
 TRANSFERS = []
@@ -7,7 +7,7 @@ TRANSFERS = []
 
 class Transfers(Base):
     def __init__(self, root_path, is_debug=False):
-        self.data_path = root_path + "transfers.json"
+        self.data_path = os.path.join(root_path, "data", "transfers.json")
         self.load(is_debug)
 
     # This function returns the list of transfers

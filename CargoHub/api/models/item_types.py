@@ -1,4 +1,5 @@
 import json
+import os
 
 from models.base import Base
 
@@ -9,7 +10,7 @@ ITEM_TYPES = []
 class ItemTypes(Base):
     #initializes the itemtype and sets the path to item_types.json for data
     def __init__(self, root_path, is_debug=False):
-        self.data_path = root_path + "item_types.json"
+        self.data_path = os.path.join(root_path, "data", "item_types.json")
         self.load(is_debug)
 
     #returns all the item types
