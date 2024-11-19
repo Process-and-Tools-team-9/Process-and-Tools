@@ -22,9 +22,16 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Make integration-test.sh executable
+      run: |
+        chmod +x ./CargoHub/Integration-Tests/integration-test.sh
+
+    - name: Run integration tests with integration-test.sh
+      run: |
+        ./CargoHub/Integration-Tests/integration-test.sh
     - name: Run integration tests with pytest
       run: |
-        pytest ./CargoHub/Integration-Tests --cov=api --cov-report xml:coverage.xml
+        pytest ./CargoHub/Integration-Tests --cov=CargoHub/api --cov-report xml:coverage.xml
     - name: Run code coverage
       run: |
         # Run coverage report
