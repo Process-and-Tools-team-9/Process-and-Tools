@@ -25,7 +25,6 @@ jobs:
     - name: Make integration-test.sh executable
       run: |
         chmod +x CargoHub/Integration-Tests/integration-test.sh
-
     - name: Run integration tests with integration-test.sh
       run: |
         CargoHub/Integration-Tests/integration-test.sh
