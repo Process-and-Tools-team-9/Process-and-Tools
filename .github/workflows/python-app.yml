@@ -22,6 +22,12 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name:  Make the start of the program an executable
+      run: |
+        chmod +x CargoHub/start-system.sh
+    - name: Run Start-system to let the program run
+      run: |
+          CargoHub/start-system.sh
     - name: Make integration-test.sh executable
       run: |
         chmod +x CargoHub/Integration-Tests/integration-test.sh
