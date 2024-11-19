@@ -1,2 +1,2 @@
 #!/bin/bash
-python3 ./api/main.py
+python3 CargoHub/api/main.py
