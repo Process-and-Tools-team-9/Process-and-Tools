@@ -1,4 +1,7 @@
 #!/bin/bash
+
+cd "$(dirname "$0")"
+
 python -m pytest test_clients_it.py
 python -m pytest test_inventories_it.py
 python -m pytest test_item_groups_it.py
