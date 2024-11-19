@@ -10,6 +10,8 @@ from models.suppliers import Suppliers
 from models.orders import Orders
 from models.clients import Clients
 from models.shipments import Shipments
+import os
+
 
 # DEBUG is either True or False
 # If True then the program runs in debug mode and gives additional information
@@ -17,7 +19,11 @@ from models.shipments import Shipments
 DEBUG = False
 
 #The root path of all the data that's contained in this project
-ROOT_PATH = "CargoHub/test-data/"
+
+
+ROOT_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+
+
 
 _warehouses = None
 _locations = None

@@ -1,4 +1,5 @@
 import json
+import os
 
 from models.base import Base
 
@@ -9,7 +10,7 @@ INVENTORIES = []
 class Inventories(Base):
      #Initializes the inventories and sets the path to the inventories.json for data
     def __init__(self, root_path, is_debug=False):
-        self.data_path = root_path + "inventories.json"
+        self.data_path = os.path.join(root_path, "data", "inventories.json")
         self.load(is_debug)
 
     #Returns all the inventories data

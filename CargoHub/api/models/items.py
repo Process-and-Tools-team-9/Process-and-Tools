@@ -1,4 +1,5 @@
 import json
+import os
 
 from models.base import Base
 
@@ -10,7 +11,7 @@ ITEMS = []
 class Items(Base): 
     #Initializes the item and sets the path to the item.json for data
     def __init__(self, root_path, is_debug=False):
-        self.data_path = root_path + "items.json"
+        self.data_path = os.path.join(root_path, "data", "items.json")
         self.load(is_debug)
 
     #returns all the items
