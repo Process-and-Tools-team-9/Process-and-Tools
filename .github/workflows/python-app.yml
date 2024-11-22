@@ -30,9 +30,6 @@ jobs:
     - name: Run integration tests with integration-test.sh
       run: |
         CargoHub/Integration-Tests/integration-test.sh
-    - name: Run integration tests with pytest
-      run: |
-        pytest CargoHub/Integration-Tests --cov=CargoHub/api --cov-report xml:coverage.xml
     - name: Stop the server
       run: |
         pkill -f CargoHub/api/main.py || true
