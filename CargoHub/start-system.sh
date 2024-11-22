@@ -1,5 +1,5 @@
 #!/bin/bash
 
 
-python3 Cargohub/api/main.py
+python3 CargoHub/api/main.py
 
